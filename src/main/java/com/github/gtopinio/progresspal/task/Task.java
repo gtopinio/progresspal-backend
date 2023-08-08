@@ -29,5 +29,6 @@ public class Task {
     private String description;
     private String category;
     private String type;
+    private String userEmail;
     private LocalDate date;
 }
