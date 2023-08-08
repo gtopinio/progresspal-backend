@@ -15,6 +15,12 @@
 	<description>Spring Boot project for ProgressPal</description>
 	<properties>
 		<java.version>17</java.version>
+		<!--suppress UnresolvedMavenProperty -->
+		<spring.datasource.url>${dbUrl}</spring.datasource.url>
+		<!--suppress UnresolvedMavenProperty -->
+		<spring.datasource.username>${dbUser}</spring.datasource.username>
+		<!--suppress UnresolvedMavenProperty -->
+		<spring.datasource.password>${dbPassword}</spring.datasource.password>
 	</properties>
 	<dependencies>
 		<dependency>
