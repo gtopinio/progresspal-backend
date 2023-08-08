@@ -31,4 +31,14 @@ public class Task {
     private String type;
     private String userEmail;
     private LocalDate date;
+
+    public Task(String title, String description, String category, String type, String userEmail, LocalDate date) {
+        this.title = title;
+        this.description = description;
+        this.category = category;
+        this.type = type;
+        this.userEmail = userEmail;
+        this.date = date;
+    }
+
 }
