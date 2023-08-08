@@ -20,6 +20,5 @@ public class TaskController {
     Iterable<Task> emails() {
         return this.taskService.getTasks();
     }
-
     
 }

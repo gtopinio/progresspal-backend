@@ -1,9 +1,6 @@
 package com.github.gtopinio.progresspal.task;
 
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.SequenceGenerator;
+import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDate;
@@ -13,6 +10,8 @@ import java.time.LocalDate;
 @ToString
 @Getter
 @Setter
+@Entity
+@Table
 public class Task {
     @Id
     @SequenceGenerator(
