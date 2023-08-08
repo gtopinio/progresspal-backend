@@ -3,6 +3,12 @@ type Query {
     taskByEmail(userEmail: String!): [Task],
 }
 
+type Mutation {
+    createTask(task: TaskInput): Task,
+    updateTask(id: ID!, task: TaskInput): Task,
+    deleteTask(id: ID!): Task,
+}
+
 type Task {
     id: ID!,
     title: String!,
@@ -12,4 +18,12 @@ type Task {
     userEmail: String!,
     date: String!,
     time: String!,
+}
+
+input TaskInput {
+    title: String!,
+    description: String!,
+    category: String!,
+    type: String!,
+    userEmail: String!,
 }

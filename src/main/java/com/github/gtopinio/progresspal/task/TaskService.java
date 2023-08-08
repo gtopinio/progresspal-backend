@@ -1,9 +1,12 @@
 package com.github.gtopinio.progresspal.task;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.util.concurrent.CompletableFuture;
 
 @Service
 public class TaskService {
@@ -23,6 +26,17 @@ public class TaskService {
     public Iterable<Task> getTasksByEmail(String userEmail) {
         return this.taskRepository.findByUserEmail(userEmail);
 
+    }
+
+    @Async
+    public CompletableFuture<Task> createTask(String title, String description, String category, String type, String userEmail) {
+
+        LocalDate date = LocalDate.now();
+        LocalTime time = LocalTime.now();
+
+        Task task = new Task(title, description, category, type, userEmail, date, time);
+        this.taskRepository.save(task);
+        return CompletableFuture.completedFuture(task);
     }
 
 }
