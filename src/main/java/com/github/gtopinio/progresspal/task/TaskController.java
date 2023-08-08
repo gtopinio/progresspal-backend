@@ -34,6 +34,11 @@ public class TaskController {
         return this.taskService.createTask(task.title, task.description, task.category, task.type, task.userEmail);
     }
 
+    @MutationMapping
+    CompletableFuture<Task> updateTask(@Argument Long id, @Argument TaskInput task) {
+        return this.taskService.updateTask(id, task.title, task.description, task.category, task.type, task.userEmail);
+    }
+
     record TaskInput(String title, String description, String category, String type, String userEmail) {
     }
 

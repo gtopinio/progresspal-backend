@@ -39,4 +39,16 @@ public class TaskService {
         return CompletableFuture.completedFuture(task);
     }
 
+    @Async
+    public CompletableFuture<Task> updateTask(Long id, String title, String description, String category, String type, String userEmail) {
+        Task task = this.taskRepository.findById(id).orElseThrow();
+        task.setTitle(title);
+        task.setDescription(description);
+        task.setCategory(category);
+        task.setType(type);
+        task.setUserEmail(userEmail);
+        this.taskRepository.save(task);
+        return CompletableFuture.completedFuture(task);
+    }
+
 }
