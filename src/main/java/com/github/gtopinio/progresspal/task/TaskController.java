@@ -5,6 +5,7 @@ import org.springframework.graphql.data.method.annotation.Argument;
 import org.springframework.graphql.data.method.annotation.MutationMapping;
 import org.springframework.graphql.data.method.annotation.QueryMapping;
 import org.springframework.stereotype.Controller;
+import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 
 @Controller
@@ -39,7 +40,15 @@ public class TaskController {
         return this.taskService.updateTask(id, task.title, task.description, task.category, task.type, task.userEmail);
     }
 
+    @MutationMapping
+    CompletableFuture<Optional<DeleteTaskResponse>> deleteTask(@Argument Long id) {
+        return this.taskService.deleteTask(id);
+    }
+
     record TaskInput(String title, String description, String category, String type, String userEmail) {
+    }
+
+    record DeleteTaskResponse(Boolean success, String message) {
     }
 
 }

@@ -6,7 +6,7 @@ type Query {
 type Mutation {
     createTask(task: TaskInput): Task,
     updateTask(id: ID!, task: TaskInput): Task,
-    deleteTask(id: ID!): Task,
+    deleteTask(id: ID!): DeleteTaskResponse,
 }
 
 type Task {
@@ -26,4 +26,9 @@ input TaskInput {
     category: String!,
     type: String!,
     userEmail: String!,
+}
+
+type DeleteTaskResponse {
+    success: Boolean!,
+    message: String!,
 }

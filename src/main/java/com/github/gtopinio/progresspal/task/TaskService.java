@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 
 @Service
@@ -49,6 +50,23 @@ public class TaskService {
         task.setUserEmail(userEmail);
         this.taskRepository.save(task);
         return CompletableFuture.completedFuture(task);
+    }
+
+    @Async
+    public CompletableFuture<Optional<TaskController.DeleteTaskResponse>> deleteTask(Long id) {
+        try {
+            Optional<Task> task = this.taskRepository.findById(id);
+
+            if(task.isPresent()) {
+                this.taskRepository.deleteById(id);
+                return CompletableFuture.completedFuture(Optional.of(new TaskController.DeleteTaskResponse(true, "Task deleted successfully")));
+            } else {
+                return CompletableFuture.completedFuture(Optional.of(new TaskController.DeleteTaskResponse(false, "Task not found")));
+            }
+
+        } catch (Exception e) {
+            return CompletableFuture.completedFuture(Optional.of(new TaskController.DeleteTaskResponse(false, "Error in deleting task")));
+        }
     }
 
 }
