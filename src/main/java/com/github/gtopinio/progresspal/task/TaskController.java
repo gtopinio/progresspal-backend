@@ -17,8 +17,8 @@ public class TaskController {
     }
 
     @QueryMapping
-    Iterable<Task> emails() {
+    Iterable<Task> tasks() {
         return this.taskService.getTasks();
     }
-    
+
 }
