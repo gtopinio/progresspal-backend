@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -30,14 +31,16 @@ public class Task {
     private String type;
     private String userEmail;
     private LocalDate date;
+    private LocalTime time;
 
-    public Task(String title, String description, String category, String type, String userEmail, LocalDate date) {
+    public Task(String title, String description, String category, String type, String userEmail, LocalDate date, LocalTime time) {
         this.title = title;
         this.description = description;
         this.category = category;
         this.type = type;
         this.userEmail = userEmail;
         this.date = date;
+        this.time = time;
     }
 
 }

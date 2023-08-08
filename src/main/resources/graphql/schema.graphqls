@@ -10,4 +10,5 @@ type Task {
     type: String!,
     userEmail: String!,
     date: String!,
+    time: String!,
 }

@@ -15,6 +15,6 @@ public class ProgresspalApplication {
 
 	@GetMapping("/")
 	public String home() {
-		return "Hello World!";
+		return "This is the ProgressPal Backend Server :D";
 	}
 }
