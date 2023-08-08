@@ -43,4 +43,8 @@ public class Task {
         this.time = time;
     }
 
+    public String email() {
+        return this.userEmail;
+    }
+
 }

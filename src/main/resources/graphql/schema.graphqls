@@ -1,5 +1,6 @@
 type Query {
     tasks: [Task],
+    taskByEmail(userEmail: String!): [Task],
 }
 
 type Task {
