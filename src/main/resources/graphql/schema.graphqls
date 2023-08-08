@@ -1,0 +1,13 @@
+type Query {
+    tasks: [Task],
+}
+
+type Task {
+    id: ID!,
+    title: String!,
+    description: String!,
+    category: String!,
+    type: String!,
+    userEmail: String!,
+    date: String!,
+}
