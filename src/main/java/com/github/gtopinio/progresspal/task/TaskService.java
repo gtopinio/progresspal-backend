@@ -4,8 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
-import java.time.LocalTime;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 
@@ -32,10 +32,9 @@ public class TaskService {
     @Async
     public CompletableFuture<Task> createTask(String title, String description, String category, String type, String userEmail) {
 
-        LocalDate date = LocalDate.now();
-        LocalTime time = LocalTime.now();
+        LocalDateTime dateTime = LocalDateTime.now();
 
-        Task task = new Task(title, description, category, type, userEmail, date, time);
+        Task task = new Task(title, description, category, type, userEmail, dateTime);
         this.taskRepository.save(task);
         return CompletableFuture.completedFuture(task);
     }

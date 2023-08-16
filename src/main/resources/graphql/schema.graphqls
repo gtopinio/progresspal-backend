@@ -16,8 +16,7 @@ type Task {
     category: String!,
     type: String!,
     userEmail: String!,
-    date: String!,
-    time: String!,
+    dateTime: String!
 }
 
 input TaskInput {

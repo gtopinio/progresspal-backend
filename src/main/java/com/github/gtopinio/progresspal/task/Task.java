@@ -3,8 +3,7 @@ package com.github.gtopinio.progresspal.task;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.time.LocalDate;
-import java.time.LocalTime;
+import java.time.LocalDateTime;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -30,17 +29,15 @@ public class Task {
     private String category;
     private String type;
     private String userEmail;
-    private LocalDate date;
-    private LocalTime time;
+    private LocalDateTime dateTime;
 
-    public Task(String title, String description, String category, String type, String userEmail, LocalDate date, LocalTime time) {
+    public Task(String title, String description, String category, String type, String userEmail, LocalDateTime dateTime) {
         this.title = title;
         this.description = description;
         this.category = category;
         this.type = type;
         this.userEmail = userEmail;
-        this.date = date;
-        this.time = time;
+        this.dateTime = dateTime;
     }
 
     public String email() {
