@@ -84,7 +84,7 @@
 				</configuration>
 			</plugin>
 		</plugins>
-		<finalName>progresspal-spring-boot-v1</finalName>
+		<finalName>progresspal-spring-boot</finalName>
 	</build>
 
 </project>
