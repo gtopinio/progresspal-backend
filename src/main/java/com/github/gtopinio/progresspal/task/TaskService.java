@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.time.ZoneId;
+import java.time.ZonedDateTime;
 import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 
@@ -32,7 +33,10 @@ public class TaskService {
     @Async
     public CompletableFuture<Task> createTask(String title, String description, String category, String type, String userEmail) {
 
-        LocalDateTime dateTime = LocalDateTime.now();
+        // Setting up the time for PH
+        ZoneId zoneId = ZoneId.of("Asia/Manila");
+        ZonedDateTime zonedDateTime = ZonedDateTime.now(zoneId);
+        LocalDateTime dateTime = zonedDateTime.toLocalDateTime();
 
         Task task = new Task(title, description, category, type, userEmail, dateTime);
         this.taskRepository.save(task);
@@ -47,6 +51,11 @@ public class TaskService {
         task.setCategory(category);
         task.setType(type);
         task.setUserEmail(userEmail);
+        // Setting up the time for PH for the updated time of the task
+        ZoneId zoneId = ZoneId.of("Asia/Manila");
+        ZonedDateTime zonedDateTime = ZonedDateTime.now(zoneId);
+        LocalDateTime dateTime = zonedDateTime.toLocalDateTime();
+        task.setDateTime(dateTime);
         this.taskRepository.save(task);
         return CompletableFuture.completedFuture(task);
     }
